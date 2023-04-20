@@ -69,7 +69,7 @@ namespace MellitusClass
             List<VideoExercicio> list = new List<VideoExercicio>();
             VideoExercicio td = null;
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from videoexer set video where id_exer = " + id_exer;
+            cmd.CommandText = "select video from videoexer where id_exer = " + id_exer;
             var dr = cmd.ExecuteReader();
             while(dr.Read())
             {
