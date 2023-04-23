@@ -37,20 +37,30 @@ namespace MellitusClass
 
 
         //Métodos De Acesso
-        public void Inserir()
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void InserirExercicios()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert exercicios (titulo, descricao, tempo, id_tipo) values (@titulo, @descricao, @tempo, @tipo)";
-            cmd.Parameters.Add("@titulo", MySqlDbType.VarChar).Value = Titulo; 
-            cmd.Parameters.Add("@descricao", MySqlDbType.VarChar).Value = Descricao;
-            cmd.Parameters.Add("tempo", MySqlDbType.DateTime).Value = Tempo;
-            cmd.Parameters.Add("tipo", MySqlDbType.Int32).Value = TipoExercicio.Id;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_insere_exercicio";
+            cmd.Parameters.AddWithValue("_id", 0).Direction = ParameterDirection.Output;
+            cmd.Parameters.AddWithValue("_titulo", Titulo).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_descricao", Descricao).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_tempo", Tempo).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_id_tipo", TipoExercicio.Id).Direction = ParameterDirection.Input;
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "select @@identity";
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            Id = Convert.ToInt32(cmd.Parameters["_id"].Value);
             Banco.Fechar(cmd);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Exercicio ObterPorId(int id)
         {
             Exercicio exer = null;
@@ -71,6 +81,11 @@ namespace MellitusClass
             return exer;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_tipo"></param>
+        /// <returns></returns>
         public static List<Exercicio> ObterPorTipo(int id_tipo)
         {
             List<Exercicio> lista = new List<Exercicio>();
@@ -92,7 +107,12 @@ namespace MellitusClass
             return lista;
         }
 
-        public static List<Exercicio> Listar(string titulo = "")
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="titulo"></param>
+        /// <returns></returns>
+        public static List<Exercicio> ListarExercicios(string titulo = "")
         {
             List<Exercicio> list = new List<Exercicio>();
             Exercicio exer = null;

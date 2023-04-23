@@ -34,7 +34,11 @@ namespace MellitusClass
         }
 
         //Métodos de Acesso
-        public void Inserir()
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void InserirImgReceitas()
         {
             var cmd = Banco.Abrir();
             cmd.CommandText = "insert imagemexer (id_exer, imagens) values (@exer, @img)";
@@ -46,6 +50,11 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static ImagemExercicio ObterPorId(int id)
         {
             ImagemExercicio img = null;
@@ -64,6 +73,11 @@ namespace MellitusClass
             return img;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_exer"></param>
+        /// <returns></returns>
         public static List<ImagemExercicio> ListarImgPorExercicios(int id_exer)
         {
             List<ImagemExercicio> list = new List<ImagemExercicio>();
@@ -83,7 +97,11 @@ namespace MellitusClass
             return list;
         }
 
-        public static List<ImagemExercicio> Listar()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<ImagemExercicio> ListarTudoDeImgExercicios()
         {
             List<ImagemExercicio> lista = new List<ImagemExercicio>();
             ImagemExercicio td = null;
@@ -102,7 +120,11 @@ namespace MellitusClass
             return lista;
         }
 
-        public void Excluir(int id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        public void ExcluirImgExercicio(int id)
         {
             var cmd = Banco.Abrir();
             cmd.CommandText = "delete imagemexer where id = " + id;

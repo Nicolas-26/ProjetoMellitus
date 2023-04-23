@@ -22,5 +22,25 @@ namespace ProjetoMellitus
         {
 
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Exercicio exer = new Exercicio(
+                0, textBox2.Text, textBox3.Text, Convert.ToDateTime(dateTimePicker1.Text),
+                TipoExercicio.ObterPorId(Convert.ToInt32(textBox5.Text))
+                );
+            exer.Inserir();
+            textBox1.Text = exer.Id.ToString();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

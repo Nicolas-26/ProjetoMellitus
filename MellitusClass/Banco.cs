@@ -14,7 +14,7 @@ namespace MellitusClass
 
         public static MySqlCommand Abrir()
         {
-            strConn = @"server=localhost;database=dbmellitus;port=3306;user id=root";
+            strConn = @"server=localhost;database=dbmellitus;port=3306;user id=root;password=senacitaquera";
             MySqlCommand cmd = new MySqlCommand();
             try
             {

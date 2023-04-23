@@ -49,7 +49,11 @@ namespace MellitusClass
         }
 
         //Métodos De Acesso
-        public void Inserir()
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void InserirReceitas()
         {
             var cmd = Banco.Abrir();
             cmd.CommandText = "insert receitas (id_tipo, titulo, descricao, tempo)" +
@@ -64,9 +68,8 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
-        public static List<Receita> ObterPorId(int id)
+        public static Receita ObterPorId(int id)
         {
-            List<Receita> list = new List<Receita>();
             Receita receita = null;
             var cmd = Banco.Abrir();
             cmd.CommandText = "select * from receitas where id = " + id;
@@ -79,10 +82,9 @@ namespace MellitusClass
                 receita.Titulo = dr.GetString(2);
                 receita.Descricao = dr.GetString(3);
                 receita.Tempo = dr.GetDateTime(4);
-                list.Add(receita);
             }
             Banco.Fechar(cmd);
-            return list;
+            return receita;
         }
 
         public static List<Receita> ListarTiposPorReceitas(int id_tipo)

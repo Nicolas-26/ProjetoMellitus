@@ -37,7 +37,11 @@ namespace MellitusClass
         }
 
         //Métodos De Acesso
-        public void Inserir()
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void InserirComentariosExercicios()
         {
             var cmd = Banco.Abrir();
             cmd.CommandText = "insert comentariosexer (id_user, id_exer, comentarios)" +
@@ -51,6 +55,11 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static ComentarioExercicio ObterPorId(int id)
         {
             ComentarioExercicio com = null;
@@ -70,6 +79,12 @@ namespace MellitusClass
             return com;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_user"></param>
+        /// <param name="id_exer"></param>
+        /// <returns></returns>
         public static List<ComentarioExercicio> ObterPorUsuarioEexercicios(int id_user, int id_exer)
         {
             List<ComentarioExercicio> com = new List<ComentarioExercicio>();
@@ -92,6 +107,11 @@ namespace MellitusClass
             return com;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_exer"></param>
+        /// <returns></returns>
         public static List<ComentarioExercicio> ListarPorExercicios(int id_exer)
         {
             List<ComentarioExercicio> list = new List<ComentarioExercicio>();
@@ -112,6 +132,11 @@ namespace MellitusClass
             return list;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_user"></param>
+        /// <returns></returns>
         public static List<ComentarioExercicio> ListarPorUsuarios(int id_user)
         {
             List<ComentarioExercicio> list = new List<ComentarioExercicio>();
@@ -132,6 +157,10 @@ namespace MellitusClass
             return list;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static List<ComentarioExercicio> Listar()
         {
             List<ComentarioExercicio> lista = new List<ComentarioExercicio>();
@@ -152,7 +181,11 @@ namespace MellitusClass
             return lista;
         }
 
-        public void Excluir(int id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        public void ExcluirComentariosExer(int id)
         {
             var cmd = Banco.Abrir();
             cmd.CommandText = "delete comentariosexer where id = " + id;
