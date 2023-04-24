@@ -14,10 +14,12 @@ namespace MellitusClass
         private int id;
         private string video;
 
+
         //propriedades
         public int Id { get { return id; } set { id = value; } }
         public Exercicio Exercicio { get; set; }
         public string Video { get { return video; } set {  video = value; } }
+
 
         //Métodos Construtores
         public VideoExercicio() { }
@@ -33,7 +35,12 @@ namespace MellitusClass
             Video = video;
         }
 
+
         //Métodos De Acesso
+
+        /// <summary>
+        /// Método para inserir campos (id, id do exercicio e o video dos exercicios) na tabela videoexer do banco.
+        /// </summary>
         public void Inserir()
         {
             var cmd = Banco.Abrir();
@@ -46,6 +53,12 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
+        /// <summary>
+        /// Método que traz todos campos da tabela videoexer onde o id ser especifícado.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static VideoExercicio ObterPorId(int id)
         {
             VideoExercicio video = null;
@@ -64,6 +77,12 @@ namespace MellitusClass
             return video;
         }
 
+
+        /// <summary>
+        /// Método para trazer todos videos do exercicio certo com o id do exercicio(para saber que video pertence ao exercicio).
+        /// </summary>
+        /// <param name="id_exer"></param>
+        /// <returns></returns>
         public List<VideoExercicio> ListarVideosDosExercicios(int id_exer)
         {
             List<VideoExercicio> list = new List<VideoExercicio>();
@@ -83,6 +102,11 @@ namespace MellitusClass
             return list;
         }
 
+
+        /// <summary>
+        /// Método para listar todos elementos da tabela videoexer do banco e retorna todos para o adm.
+        /// </summary>
+        /// <returns></returns>
         public List<VideoExercicio> Listar()
         {
             List<VideoExercicio> list = new List<VideoExercicio>();
@@ -102,10 +126,15 @@ namespace MellitusClass
             return list;
         }
 
+
+        /// <summary>
+        /// Método Para excluir um campo inteiro da tabela videoexer do banco ao ser inserido o id.
+        /// </summary>
+        /// <param name="id"></param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete imagemexer where id = " + id;
+            cmd.CommandText = "delete from videoexer where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

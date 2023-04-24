@@ -14,11 +14,13 @@ namespace MellitusClass
         private int id;
         private string comentario;
 
+
         //propriedades
         public int Id { get { return id; } set { id = value;  } }
         public Usuario Usuarios { get; set; }
         public Receita Receitas { get; set; }
         public string Comentario { get {  return comentario; } set {  comentario = value; } }
+
 
         //Métodos Construtores
         public ComentarioReceita() { }
@@ -36,10 +38,12 @@ namespace MellitusClass
             Comentario = comentario;
         }
 
+
         //Métodos De Acesso
 
         /// <summary>
-        /// 
+        /// Inserir Campos(id, um usuário, uma receita e o comentario feito pelo usuário) na tabela comentariosrec 
+        /// No Banco de Dados
         /// </summary>
         public void InserirComentariosReceita()
         {
@@ -54,8 +58,9 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
         /// <summary>
-        /// 
+        /// Método para consultar um comentário na receita obtendo o id para consultar. 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -78,8 +83,9 @@ namespace MellitusClass
             return rct;
         }
 
+
         /// <summary>
-        /// 
+        /// Método que retorna os comentários da tabela comentariosrec do banco, ao inserir o id do usuario e o id da receita
         /// </summary>
         /// <param name="id_user"></param>
         /// <param name="id_rec"></param>
@@ -106,8 +112,9 @@ namespace MellitusClass
             return cr;
         }
 
+
         /// <summary>
-        /// 
+        /// Métodos que retorna os comentários feito pelo usuário dentro da receita, ao informar qual id da receita.
         /// </summary>
         /// <param name="id_rec"></param>
         /// <returns></returns>
@@ -131,8 +138,9 @@ namespace MellitusClass
             return list;
         }
 
+
         /// <summary>
-        /// 
+        /// Métodos que retorna os comentários feito pelo usuário ao informar o id do usuário (para saber qual usuário comentou).
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
@@ -156,8 +164,9 @@ namespace MellitusClass
             return lista;
         }
 
+
         /// <summary>
-        /// 
+        /// Método que lista todos os elementos que estão na tabela comentariosrec(do banco de dados) e retorna todos para o adm.
         /// </summary>
         /// <returns></returns>
         public static List<ComentarioReceita> ListarComentariosRec()
@@ -180,14 +189,15 @@ namespace MellitusClass
             return lcr;
         }
 
+
         /// <summary>
-        /// 
+        /// Método para excluir um comentário na receita não apropriado feito pelo usuário
         /// </summary>
         /// <param name="id"></param>
         public void ExcluirComentariosReceita(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete comentariosrec where id = " + id;
+            cmd.CommandText = "delete from comentariosrec where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

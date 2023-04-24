@@ -14,10 +14,12 @@ namespace MellitusClass
         private int id;
         private string imagens;
 
+
         //propriedades
         public int Id { get { return id; } set { id = value; } }
         public Exercicio Exercicio { get; set; }
         public string Imagens { get { return imagens; } set {  imagens = value; } }
+
 
         //Métodos Construtores
         public ImagemExercicio() { }
@@ -33,10 +35,11 @@ namespace MellitusClass
             Imagens = imagens;
         }
 
+
         //Métodos de Acesso
 
         /// <summary>
-        /// 
+        /// Método para inserir campos (id, o id do exercicio e as imagens do exercicio) na tabela imagemexer do banco.
         /// </summary>
         public void InserirImgReceitas()
         {
@@ -50,8 +53,9 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
         /// <summary>
-        /// 
+        /// Método para consultar todos campos da tabela imagemexer do banco, ao especificar o id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -73,8 +77,9 @@ namespace MellitusClass
             return img;
         }
 
+
         /// <summary>
-        /// 
+        /// Método para trazer o id do exercicio para saber a imagem do exercicio.
         /// </summary>
         /// <param name="id_exer"></param>
         /// <returns></returns>
@@ -97,8 +102,9 @@ namespace MellitusClass
             return list;
         }
 
+
         /// <summary>
-        /// 
+        /// Método que lista todos elementos da tabela imagemexer do banco e retorna todos para o adm.
         /// </summary>
         /// <returns></returns>
         public static List<ImagemExercicio> ListarTudoDeImgExercicios()
@@ -120,14 +126,15 @@ namespace MellitusClass
             return lista;
         }
 
+
         /// <summary>
-        /// 
+        /// Método para excluir um campo inteiro da tabela imagemexer do banco.
         /// </summary>
         /// <param name="id"></param>
         public void ExcluirImgExercicio(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete imagemexer where id = " + id;
+            cmd.CommandText = "delete from imagemexer where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

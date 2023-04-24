@@ -14,9 +14,11 @@ namespace MellitusClass
         private int id;
         private string tipo;
 
+
         //propriedades
         public int Id { get { return id; } set { id = value; } }
         public string Tipo { get {  return tipo; } set {  tipo = value; } }
+
 
         //Métodos Construtores
         public TipoExercicio() { }
@@ -30,8 +32,13 @@ namespace MellitusClass
             Tipo = tipo;
         }
 
+
         //Métodos De Acesso
-        public void Inserir()
+
+        /// <summary>
+        /// Método para inserir campos (id e o tipo de exercicio) na tabela tipo_exercicio do banco.
+        /// </summary>
+        public void InserirTipoExercicio()
         {
             var cmd = Banco.Abrir();
             cmd.CommandText = "insert tipo_exercicio (tipo) values (@tipo)";
@@ -42,6 +49,12 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
+        /// <summary>
+        /// Método que traz todos os campos da tabela tipo_exercicio onde o id é especifícado.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static TipoExercicio ObterPorId(int id)
         {
             TipoExercicio tipo = null;
@@ -59,6 +72,11 @@ namespace MellitusClass
             return tipo;
         }
 
+
+        /// <summary>
+        /// Método que lista todos elementos da tabela tipo_exercicio e retorna todos para o adm.
+        /// </summary>
+        /// <returns></returns>
         public static List<TipoExercicio> Listar()
         {
             List<TipoExercicio> list = new List<TipoExercicio>();
@@ -77,10 +95,15 @@ namespace MellitusClass
             return list;
         }
 
+
+        /// <summary>
+        /// Método que exclui um campo inteiro na tabela tipo_exercicio ao especificar o id certo.
+        /// </summary>
+        /// <param name="id"></param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete tipo_exercicio where id = " + id;
+            cmd.CommandText = "delete from tipo_exercicio where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

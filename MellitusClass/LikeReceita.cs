@@ -12,11 +12,13 @@ namespace MellitusClass
         //atributos
         private int id;
 
+
         //propriedades
         public int Id { get { return id; } set { id = value; } }
         public Usuario Usuario { get; set; }
         public Receita Receita { get; set; }
         public int Quantidade { get; set; }
+
 
         //Métodos Construtores
         public LikeReceita() { }
@@ -34,10 +36,11 @@ namespace MellitusClass
             Quantidade = quantidade;
         }
 
+
         //Métodos De Acesso
 
         /// <summary>
-        /// 
+        /// Método para inserir campos (id, o id do usuário, o id da receita e a quantidade de likes) na tabela likerec do banco.
         /// </summary>
         public void InserirLikeReceita()
         {
@@ -52,7 +55,7 @@ namespace MellitusClass
         }
 
         /// <summary>
-        /// 
+        /// Método que retorna todos campos da tabela likerec do banco onde o id é especifícado.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -76,7 +79,8 @@ namespace MellitusClass
         }
 
         /// <summary>
-        /// 
+        /// Método para verificar pelo o id do usuario e o id da receita, qual usuário que colocou o like em qual receita que o 
+        /// usuário efetuou o like
         /// </summary>
         /// <param name="id_user"></param>
         /// <param name="id_rec"></param>
@@ -86,7 +90,7 @@ namespace MellitusClass
             List<LikeReceita> lkr = new List<LikeReceita>();
             LikeReceita lr = null;
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from likerec set quant where id_user = @user, id_rec = @rec";
+            cmd.CommandText = "select quant from likerec where id_user = @user and id_rec = @rec";
             cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = id_user;
             cmd.Parameters.Add("@rec", MySqlDbType.Int32).Value = id_rec;
             var dr = cmd.ExecuteReader();
@@ -103,8 +107,9 @@ namespace MellitusClass
             return lkr;
         }
 
+
         /// <summary>
-        /// 
+        /// Método que retorna todos campos da tabela likerec ao especificar o id da receita(para saber qual receita possui aquele like).
         /// </summary>
         /// <param name="id_rec"></param>
         /// <returns></returns>
@@ -128,8 +133,9 @@ namespace MellitusClass
             return list;
         }
 
+
         /// <summary>
-        /// 
+        /// Método que retorna todos campos da tabela likerec ao especificar o id do usuário(para saber qual usuário deu like).
         /// </summary>
         /// <param name="id_user"></param>
         /// <returns></returns>
@@ -153,8 +159,9 @@ namespace MellitusClass
             return lista;
         }
 
+
         /// <summary>
-        /// 
+        /// Método que lista todos elementos da tabela likerec do banco e retorna todos para o adm.
         /// </summary>
         /// <returns></returns>
         public static List<LikeReceita> Listar()
@@ -177,14 +184,15 @@ namespace MellitusClass
             return lista;
         }
 
+
         /// <summary>
-        /// 
+        ///  Método para excluir um campo inteiro da tabela likerec do banco.
         /// </summary>
         /// <param name="id"></param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete likerec where id = " + id;
+            cmd.CommandText = "delete from likerec where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

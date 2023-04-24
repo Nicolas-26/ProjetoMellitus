@@ -14,11 +14,13 @@ namespace MellitusClass
         private int id;
         private string comentarios;
 
+
         //propriedades
         public int Id { get { return id; } set { id = value; } }
         public Usuario Usuario { get; set; }
         public Exercicio Exercicio { get; set; }
         public string Comentarios { get {  return comentarios; } set {  comentarios = value; } }
+
 
         //Métodos Construtores
         public ComentarioExercicio() { }
@@ -36,10 +38,12 @@ namespace MellitusClass
             Comentarios = comentarios;
         }
 
+
         //Métodos De Acesso
 
         /// <summary>
-        /// 
+        /// Inserir Campos(id, um usuário, um exercício e o comentario feito pelo usuário) na tabela comentariosexer 
+        /// No Banco de Dados
         /// </summary>
         public void InserirComentariosExercicios()
         {
@@ -55,8 +59,9 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
         /// <summary>
-        /// 
+        /// Método para consultar um comentário no exercício, ao especificar o id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -79,8 +84,9 @@ namespace MellitusClass
             return com;
         }
 
+
         /// <summary>
-        /// 
+        /// Método que retorna os comentários da tabela comentariosexer do banco, ao inserir o id do usuario e o id do exercicio
         /// </summary>
         /// <param name="id_user"></param>
         /// <param name="id_exer"></param>
@@ -90,7 +96,7 @@ namespace MellitusClass
             List<ComentarioExercicio> com = new List<ComentarioExercicio>();
             ComentarioExercicio ce = null;
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from comentariosexer set comentarios where id_user = @user, id_exer = @exer";
+            cmd.CommandText = "select comentarios from comentariosexer where id_user = @user and id_exer = @exer";
             cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = id_user;
             cmd.Parameters.Add("@exer", MySqlDbType.Int32).Value = id_exer;
             var dr = cmd.ExecuteReader();
@@ -107,8 +113,9 @@ namespace MellitusClass
             return com;
         }
 
+
         /// <summary>
-        /// 
+        /// Métodos que retorna os campo da tabela comentariosexer ao saber em qual exercício foi comentado.
         /// </summary>
         /// <param name="id_exer"></param>
         /// <returns></returns>
@@ -132,8 +139,9 @@ namespace MellitusClass
             return list;
         }
 
+
         /// <summary>
-        /// 
+        /// Métodos que retorna os campo da tabela comentariosexer ao saber em qual exercício o usuário comentou.
         /// </summary>
         /// <param name="id_user"></param>
         /// <returns></returns>
@@ -157,8 +165,9 @@ namespace MellitusClass
             return list;
         }
 
+
         /// <summary>
-        /// 
+        /// Método que lista todos os elementos que estão na tabela comentariosexer(do banco de dados) e retorna todos para o adm.
         /// </summary>
         /// <returns></returns>
         public static List<ComentarioExercicio> Listar()
@@ -181,14 +190,15 @@ namespace MellitusClass
             return lista;
         }
 
+
         /// <summary>
-        /// 
+        /// Método para excluir um comentário no exercicio não apropriado feito pelo usuário
         /// </summary>
         /// <param name="id"></param>
         public void ExcluirComentariosExer(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete comentariosexer where id = " + id;
+            cmd.CommandText = "delete from comentariosexer where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

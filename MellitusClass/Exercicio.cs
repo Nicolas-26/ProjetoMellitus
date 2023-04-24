@@ -10,12 +10,20 @@ namespace MellitusClass
 {
     public class Exercicio
     {
+        //atributos
+        private int id;
+        private string titulo;
+        private string descricao;
+        private DateTime tempo;
+
+
         //propriedades
-        public int Id { get; set; }
-        public string Titulo { get; set; }
-        public string Descricao { get; set; }
-        public DateTime Tempo { get; set; }
+        public int Id { get { return id; } set { id = value; } }
+        public string Titulo { get { return titulo; } set { titulo = value; } }
+        public string Descricao { get { return descricao; } set { descricao = value; } }
+        public DateTime Tempo { get { return tempo; } set { tempo = value; } }
         public TipoExercicio TipoExercicio { get; set; }
+
 
         //Métodos Construtores
         public Exercicio() { }
@@ -39,7 +47,8 @@ namespace MellitusClass
         //Métodos De Acesso
 
         /// <summary>
-        /// 
+        /// Inserir Campos(id, um titulo do exercicio, a descrição do exercicio, o tempo do exercicio e o id para puxar da tabela
+        /// tipo_exercicio(do banco de dados), o tipo do exercicio) na tabela exercicios do banco.
         /// </summary>
         public void InserirExercicios()
         {
@@ -56,8 +65,9 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
         /// <summary>
-        /// 
+        /// Método para obter por id meu exercicio completo.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -81,8 +91,9 @@ namespace MellitusClass
             return exer;
         }
 
+
         /// <summary>
-        /// 
+        /// Método para saber qual exercicio ao ser consultado o tipo do exercicio;
         /// </summary>
         /// <param name="id_tipo"></param>
         /// <returns></returns>
@@ -107,8 +118,11 @@ namespace MellitusClass
             return lista;
         }
 
+
         /// <summary>
-        /// 
+        /// Métodos para listar todos os exercicios se o adm não iniciar com nenhuma letra na barra de pesquisa, caso o adm iniciar
+        /// com qualquer letra haverá uma consulta trazendo apenas os exercicios cujo as primeira letra da barra de pesquisa
+        /// ser idêntica
         /// </summary>
         /// <param name="titulo"></param>
         /// <returns></returns>
@@ -119,7 +133,7 @@ namespace MellitusClass
             var cmd = Banco.Abrir();
             if(titulo!=string.Empty)
             {
-                cmd.CommandText = "select * from exercicios where titulo like '%" + titulo + "%'";
+                cmd.CommandText = "select * from exercicios where titulo like '" + titulo + "%'";
             }
             else
             {
@@ -140,6 +154,10 @@ namespace MellitusClass
             return list;
         }
 
+        /// <summary>
+        /// Método para atualizar campos (título, descrição e tempo) da tabela exercicios no banco ao ser consultado o id específico.
+        /// </summary>
+        /// <param name="id"></param>
         public void Atualizar(int id)
         {
             var cmd = Banco.Abrir();
@@ -151,10 +169,14 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+        /// <summary>
+        /// Método Para excluir um exercicio no banco na tabela exercicios.
+        /// </summary>
+        /// <param name="id"></param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete exercicios where id = " + id;
+            cmd.CommandText = "delete from exercicios where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

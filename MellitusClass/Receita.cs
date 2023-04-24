@@ -16,6 +16,7 @@ namespace MellitusClass
         private string descricao;
         private DateTime tempo;
 
+
         //propriedades
         public int ID { get { return id; } set { id = value; } }
         public TipoReceita TipoReceita { get; set; }
@@ -48,26 +49,34 @@ namespace MellitusClass
             Titulo = titulo;
         }
 
+
         //Métodos De Acesso
 
         /// <summary>
-        /// 
+        /// Método Para inserir campos (id, o título da receita, a descrição da receita, o tempo que a receita tem e o id do tipo
+        /// da receita) na tabela receitas no banco.
         /// </summary>
         public void InserirReceitas()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert receitas (id_tipo, titulo, descricao, tempo)" +
-                " values (@tipo, @titulo, @descricao, @tempo)";
-            cmd.Parameters.Add("@tipo", MySqlDbType.Int32).Value = TipoReceita.Id;
-            cmd.Parameters.Add("@titulo", MySqlDbType.VarChar).Value = Titulo;
-            cmd.Parameters.Add("@descricao",MySqlDbType.VarChar).Value = Descricao;
-            cmd.Parameters.Add("@tempo",MySqlDbType.DateTime).Value = Tempo;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_insere_receita";
+            cmd.Parameters.AddWithValue("_id", 0).Direction = ParameterDirection.Output;
+            cmd.Parameters.AddWithValue("_titulo", Titulo).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_descricao", Descricao).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_tempo", Tempo).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_id_tipo", TipoReceita.Id).Direction = ParameterDirection.Input;
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "select @@identity";
-            ID = Convert.ToInt32(cmd.ExecuteScalar());
+            ID = Convert.ToInt32(cmd.Parameters["_id"].Value);
             Banco.Fechar(cmd);
         }
 
+
+        /// <summary>
+        /// Método para trazer todos os campos da tabela receitas do banco onde o id é especifícado.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Receita ObterPorId(int id)
         {
             Receita receita = null;
@@ -87,6 +96,12 @@ namespace MellitusClass
             return receita;
         }
 
+
+        /// <summary>
+        /// Método que traz todos os campos da tabela receitas ao informar o id do tipo da receita.
+        /// </summary>
+        /// <param name="id_tipo"></param>
+        /// <returns></returns>
         public static List<Receita> ListarTiposPorReceitas(int id_tipo)
         {
             List<Receita> list = new List<Receita>();
@@ -107,6 +122,12 @@ namespace MellitusClass
             return list;
         }
 
+
+        /// <summary>
+        /// Método que traz o título da tabela receita ao inserir o id do tipo da receita(para saber os titulos dos tipos de receita).
+        /// </summary>
+        /// <param name="id_tipo"></param>
+        /// <returns></returns>
         public static Receita ObterTituloPorIdDoTipo(int id_tipo)
         {
             Receita rec = null;
@@ -121,6 +142,11 @@ namespace MellitusClass
             return rec;
         }
 
+
+        /// <summary>
+        /// Método que lista todos elementos da tabela receitas do banco e retorna todos para o adm.
+        /// </summary>
+        /// <returns></returns>
         public static List<Receita> Listar()
         {
             List<Receita> receitas = new List<Receita>();
@@ -142,6 +168,11 @@ namespace MellitusClass
             return receitas;
         }
 
+
+        /// <summary>
+        /// Método para atualizar campos (título, Descrição e tempo) da tabela receitas onde o id ser especifícado.
+        /// </summary>
+        /// <param name="id"></param>
         public void Atualizar(int id)
         {
             var cmd = Banco.Abrir();
@@ -153,10 +184,15 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
+        /// <summary>
+        /// Método para excluir um campo inteiro da tabela receitas do banco.
+        /// </summary>
+        /// <param name="id"></param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete receitas where id " + id;
+            cmd.CommandText = "delete from receitas where id " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

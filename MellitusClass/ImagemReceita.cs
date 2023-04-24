@@ -13,10 +13,12 @@ namespace MellitusClass
         private int id;
         private string imagens;
 
+
         //propriedades
         public int Id { get { return id; } set { id = value; } }
         public Receita Receita { get; set; }
         public string Imagens { get { return imagens; } set { imagens = value; } }
+
 
         //Métodos Construtores
         public ImagemReceita() { }
@@ -32,10 +34,11 @@ namespace MellitusClass
             Imagens = imagens;
         }
 
+
         //Métodos de Acesso
 
         /// <summary>
-        /// 
+        /// Método para inserir campos (id, o id da receita e as imagens das receitas) na tabela imagemrec do banco.
         /// </summary>
         public void InseririmgReceitas()
         {
@@ -49,8 +52,9 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
         /// <summary>
-        /// 
+        /// Método para consultar todos campos da tabela imagemrec do banco, ao especificar o id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -72,8 +76,10 @@ namespace MellitusClass
             return imgrec;
         }
 
+
         /// <summary>
-        /// 
+        /// Método para trazer todos os campos da tabela imagemrec do banco, ao especificar o id da receita(para saber qual imagem
+        /// pertence a receita).
         /// </summary>
         /// <param name="id_rec"></param>
         /// <returns></returns>
@@ -96,8 +102,9 @@ namespace MellitusClass
             return lista;
         }
 
+
         /// <summary>
-        /// 
+        /// Método que lista todos elementos da tabela imagemrec do banco e retorna todos para o adm.
         /// </summary>
         /// <returns></returns>
         public static List<ImagemReceita> Listar()
@@ -120,13 +127,13 @@ namespace MellitusClass
         }
 
         /// <summary>
-        /// 
+        /// Método para excluir um campo inteiro da tabela imagemrec do banco.
         /// </summary>
         /// <param name="id"></param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete imagemrec where id = " + id;
+            cmd.CommandText = "delete from imagemrec where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

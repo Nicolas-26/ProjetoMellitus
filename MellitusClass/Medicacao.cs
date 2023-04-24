@@ -16,12 +16,14 @@ namespace MellitusClass
         private string instrucao;
         private string remedio;
 
+
         //propriedades
         public int Id { get { return id; } set {  id = value; } }
         public DateTime Alarme { get {  return alarme; } set {  alarme = value; } }
         public string Instrucao { get {  return instrucao; } set {  instrucao = value; } }
         public string Remedio { get {  return remedio; } set {  remedio = value; } }
         public Usuario Usuario { get; set; }
+
 
         //Métodos Construtores
         public Medicacao() { }
@@ -41,21 +43,34 @@ namespace MellitusClass
             Usuario = usuario;
         }
 
+
         //Métodos De Acesso
+
+        /// <summary>
+        /// Método Para inserir campos (id, alarme da medicação, instrução da medicação, remedio para o usuario tomar,
+        /// e o id do usuário) na tabela medicacoes do banco.
+        /// </summary>
         public void Inserir()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert medicacoes (alarme, instrucao, remedio, id_user) values (@alarme, @instrucao, @remedio, @user)";
-            cmd.Parameters.Add("@alarme", MySqlDbType.DateTime).Value = Alarme;
-            cmd.Parameters.Add("@instrucao", MySqlDbType.Text).Value = Instrucao;
-            cmd.Parameters.Add("@remedio", MySqlDbType.VarChar).Value = Remedio;
-            cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = Usuario.Id;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_insere_medicacoes";
+            cmd.Parameters.AddWithValue("_id", 0).Direction = ParameterDirection.Output;
+            cmd.Parameters.AddWithValue("_alarme", Alarme).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_instrucao", Instrucao).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_remedio", Remedio).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_id_user", Usuario.Id).Direction = ParameterDirection.Input;
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "select @@identity";
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            Id = Convert.ToInt32(cmd.Parameters["_id"].Value);
             Banco.Fechar(cmd);
         }
 
+
+        /// <summary>
+        /// Método para trazer todos os campos da tabela medicacoes do banco ao inserir o id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Medicacao ObterPorId(int id)
         {
             Medicacao med = null;
@@ -76,6 +91,13 @@ namespace MellitusClass
             return med;
         }
 
+
+        /// <summary>
+        /// Método para listar todos campos da tabela medicacoes onde o id do usuário for especifícado(para saber qual as medicações
+        /// certas do usuário especifícado).
+        /// </summary>
+        /// <param name="id_user"></param>
+        /// <returns></returns>
         public static List<Medicacao> ListarMedicacaoPorUser(int id_user)
         {
             List<Medicacao> med = new List<Medicacao>();
@@ -97,6 +119,11 @@ namespace MellitusClass
             return med;
         }
 
+
+        /// <summary>
+        /// Método que lista todos elementos da tabela medicacoes do banco e retorna todos para o adm.
+        /// </summary>
+        /// <returns></returns>
         public static List<Medicacao> Listar()
         {
             List<Medicacao> medicacao = new List<Medicacao>();
@@ -118,6 +145,11 @@ namespace MellitusClass
             return medicacao;
         }
 
+
+        /// <summary>
+        /// Método para atualizar campos (alarme, instrução, remédio) da tabela medicacoes do banco ao inserir o id certo.
+        /// </summary>
+        /// <param name="id"></param>
         public void Alterar(int id)
         {
             var cmd = Banco.Abrir();
@@ -129,10 +161,15 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
+        /// <summary>
+        /// Método para excluir um campo inteiro da tabela medicacoes do banco.
+        /// </summary>
+        /// <param name="id"></param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete medicacoes where id = " + id;
+            cmd.CommandText = "delete from medicacoes where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

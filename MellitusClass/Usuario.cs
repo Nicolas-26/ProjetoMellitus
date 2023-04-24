@@ -18,6 +18,7 @@ namespace MellitusClass
         private string senha;
         private string email;
 
+
         //propriedades
         public int Id { get { return id; } set {  id = value; } }
         public string Nome { get {  return nome; } set {  nome = value; } }
@@ -25,6 +26,7 @@ namespace MellitusClass
         public int Idade { get {  return idade; } set { idade = value;  } }
         public string Senha { get { return senha; } set { senha = value; } }
         public string Email { get { return email; } set {  email = value; } }
+
 
         //Métodos construtores
         public Usuario() { }
@@ -46,6 +48,15 @@ namespace MellitusClass
             Email = email;
         }
 
+
+        //Métodos De Acesso
+
+        /// <summary>
+        /// Método para cadastrar com email e senha.
+        /// </summary>
+        /// <param name="senha"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public static Usuario EfetuarLogin(string senha, string email)
         {
             Usuario user = null;
@@ -69,22 +80,32 @@ namespace MellitusClass
             return user;
         }
 
+
+        /// <summary>
+        /// Método para inserir campos (id, nome, sobrenome, idade, senha e email tudo do usuário) na tabela usuarios do banco
+        /// </summary>
         public void Inserir()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert usuarios (nome, sobrenome, idade, senha, email, perfil)" +
-                " values (@nome, @sobrenome, @idade, @senha, @email, default)";
-            cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = Nome;
-            cmd.Parameters.Add("@sobrenome", MySqlDbType.VarChar).Value = SobreNome;
-            cmd.Parameters.Add("@idade", MySqlDbType.Int32).Value = Idade;
-            cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = Senha;
-            cmd.Parameters.Add("email", MySqlDbType.VarChar).Value = Email;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_insere_usuario";
+            cmd.Parameters.AddWithValue("_id", 0).Direction = ParameterDirection.Output;
+            cmd.Parameters.AddWithValue("_nome", Nome).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_sobrenome", SobreNome).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_idade", Idade).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_senha", Senha).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_email", Email).Direction = ParameterDirection.Input;
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "select @@identity";
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            Id = Convert.ToInt32(cmd.Parameters["_id"].Value);
             Banco.Fechar(cmd);
         }
+       
 
+        /// <summary>
+        /// Método para trazer todos campos da tabela usuarios do banco onde o id ser especifícado.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Usuario ObterPorId(int id)
         {
             Usuario user = null;
@@ -106,6 +127,14 @@ namespace MellitusClass
             return user;
         }
 
+
+        /// <summary>
+        /// Métodos para listar todos os usuários se o adm não iniciar com nenhuma letra na barra de pesquisa, caso o adm iniciar
+        /// com qualquer letra haverá uma consulta trazendo apenas os usuários cujo as primeira letra da barra de pesquisa
+        /// ser idêntica
+        /// </summary>
+        /// <param name="texto"></param>
+        /// <returns></returns>
         public static List<Usuario> Listar(string texto = "")
         {
             List<Usuario> list = new List<Usuario>();
@@ -113,7 +142,7 @@ namespace MellitusClass
             var cmd = Banco.Abrir();
             if(texto!=string.Empty)
             {
-                cmd.CommandText = "select * from usuarios where nome like '%" + texto + "%'";
+                cmd.CommandText = "select * from usuarios where nome like '" + texto + "%'";
             }
             else
             {
@@ -135,6 +164,11 @@ namespace MellitusClass
             return list;
         }
 
+
+        /// <summary>
+        /// Método para atualizar os campos (nome, sobrenome, idade, senha) da tabela usuarios onde o id ser especifícado.
+        /// </summary>
+        /// <param name="id"></param>
         public void Atualizar(int id)
         {
             var cmd = Banco.Abrir();
@@ -147,6 +181,11 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
+        /// <summary>
+        /// Método para excluir um campo inteiro da tabela usuarios do banco.
+        /// </summary>
+        /// <param name="id"></param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();

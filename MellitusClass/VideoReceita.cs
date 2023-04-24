@@ -14,10 +14,12 @@ namespace MellitusClass
         private int id;
         private string videos;
 
+
         //propriedades
         public int Id { get { return id; } set { id = value; } }
         public Receita Receita { get; set; }
         public string Video { get { return videos; } set { videos = value; } }
+
 
         //Métodos Construtores
         public VideoReceita() { }
@@ -34,7 +36,12 @@ namespace MellitusClass
         }
 
 
+
         //Métodos De Acesso
+
+        /// <summary>
+        ///  Método para inserir campos (id, id da receita e o video das receitas) na tabela videorec do banco.
+        /// </summary>
         public void Inserir()
         {
             var vd = Banco.Abrir();
@@ -47,6 +54,12 @@ namespace MellitusClass
             Banco.Fechar(vd);
         }
 
+
+        /// <summary>
+        /// Método que traz todos campos da tabela videorec onde o id ser especifícado.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static VideoReceita ObterPorId(int id)
         {
             VideoReceita vdr = null;
@@ -65,6 +78,12 @@ namespace MellitusClass
             return vdr;
         }
 
+
+        /// <summary>
+        /// Método para trazer todos videos das receitas com o id da receita(para saber que video pertence a receita).
+        /// </summary>
+        /// <param name="id_rec"></param>
+        /// <returns></returns>
         public static List<VideoReceita> ObterVideosPorReceitas(int id_rec)
         {
             List<VideoReceita> list = new List<VideoReceita>();
@@ -84,6 +103,11 @@ namespace MellitusClass
             return list;
         }
 
+
+        /// <summary>
+        /// Método para listar todos elementos da tabela videorec do banco e retorna todos para o adm.
+        /// </summary>
+        /// <returns></returns>
         public static List<VideoReceita> Listar()
         {
             List<VideoReceita> lista = new List<VideoReceita>();
@@ -103,10 +127,15 @@ namespace MellitusClass
             return lista;
         }
 
+
+        /// <summary>
+        /// Método Para excluir um campo inteiro da tabela videorec do banco ao ser inserido o id.
+        /// </summary>
+        /// <param name="id"></param>
         public void Deletar(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete videorec where id = " + id;
+            cmd.CommandText = "delete from videorec where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

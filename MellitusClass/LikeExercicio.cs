@@ -13,11 +13,13 @@ namespace MellitusClass
         //atributos
         private int id;
 
+
         //propriedades
         public int Id { get { return id; } set { id = value; } }
         public Usuario Usuario { get; set; }
         public Exercicio Exercicio { get; set; }
         public int Quantidade { get; set; }
+
 
         //Métodos Construtores
         public LikeExercicio() { }
@@ -35,7 +37,12 @@ namespace MellitusClass
             Quantidade = quantidade;
         }
 
+
         //Métodos De Acesso
+
+        /// <summary>
+        /// Método para inserir campos (id, o id do usuário, o id do exercicio e a quantidade de likes) na tabela likeexer do banco.
+        /// </summary>
         public void Inserir()
         {
             var cmd = Banco.Abrir();
@@ -48,6 +55,12 @@ namespace MellitusClass
             Banco.Fechar(cmd);
         }
 
+
+        /// <summary>
+        /// Método que retorna todos campos da tabela likeexer do banco onde o id é especifícado.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static LikeExercicio ObterPorId(int id)
         {
             LikeExercicio like = null;
@@ -67,12 +80,20 @@ namespace MellitusClass
             return like;
         }
 
+
+        /// <summary>
+        /// Método para verificar pelo o id do usuario e o id do exercicio, qual usuário que colocou o like em qual exercicio que o 
+        /// usuário efetuou o like
+        /// </summary>
+        /// <param name="id_user"></param>
+        /// <param name="id_exer"></param>
+        /// <returns></returns>
         public static List<LikeExercicio> ObterPorUsuarioEexercicios(int id_user, int id_exer)
         {
             List<LikeExercicio> com = new List<LikeExercicio>();
             LikeExercicio ce = null;
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from likeexer set quant where id_user = @user, id_exer = @exer";
+            cmd.CommandText = "select quant from likeexer where id_user = @user and id_exer = @exer";
             cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = id_user;
             cmd.Parameters.Add("@exer", MySqlDbType.Int32).Value = id_exer;
             var dr = cmd.ExecuteReader();
@@ -89,6 +110,12 @@ namespace MellitusClass
             return com;
         }
 
+
+        /// <summary>
+        /// Método que retorna todos campos da tabela likeexer ao especificar o id do exercicio(para saber qual exercicio possui aquele like).
+        /// </summary>
+        /// <param name="id_exer"></param>
+        /// <returns></returns>
         public static List<LikeExercicio> ListarPorExercicios(int id_exer)
         {
             List<LikeExercicio> list = new List<LikeExercicio>();
@@ -109,6 +136,12 @@ namespace MellitusClass
             return list;
         }
 
+
+        /// <summary>
+        /// Método que retorna todos campos da tabela likeexer ao especificar o id do usuário(para saber qual usuário deu like).
+        /// </summary>
+        /// <param name="id_user"></param>
+        /// <returns></returns>
         public static List<LikeExercicio> ListarPorUsuarios(int id_user)
         {
             List<LikeExercicio> list = new List<LikeExercicio>();
@@ -129,6 +162,11 @@ namespace MellitusClass
             return list;
         }
 
+
+        /// <summary>
+        /// Método que lista todos elementos da tabela likeexer do banco e retorna todos para o adm.
+        /// </summary>
+        /// <returns></returns>
         public static List<LikeExercicio> Listar()
         {
             List<LikeExercicio> lista = new List<LikeExercicio>();
@@ -149,10 +187,15 @@ namespace MellitusClass
             return lista;
         }
 
+
+        /// <summary>
+        /// Método para excluir um campo inteiro da tabela likeexer do banco.
+        /// </summary>
+        /// <param name="id"></param>
         public void Excluir(int id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "delete likeexer where id = " + id;
+            cmd.CommandText = "delete from likeexer where id = " + id;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }
