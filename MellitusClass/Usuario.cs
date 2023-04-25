@@ -17,6 +17,7 @@ namespace MellitusClass
         private int idade;
         private string senha;
         private string email;
+        private string perfil;
 
 
         //propriedades
@@ -26,11 +27,12 @@ namespace MellitusClass
         public int Idade { get {  return idade; } set { idade = value;  } }
         public string Senha { get { return senha; } set { senha = value; } }
         public string Email { get { return email; } set {  email = value; } }
+        public string Perfil { get { return perfil; } set { perfil = value; } }
 
 
         //Métodos construtores
         public Usuario() { }
-        public Usuario(int id, string nome, string sobreNome, int idade, string senha, string email)
+        public Usuario(int id, string nome, string sobreNome, int idade, string senha, string email, string perfil)
         {
             Id = id;
             Nome = nome;
@@ -38,14 +40,16 @@ namespace MellitusClass
             Idade = idade;
             Senha = senha;
             Email = email;
+            Perfil = perfil;
         }
-        public Usuario(string nome, string sobreNome, int idade, string senha, string email)
+        public Usuario(string nome, string sobreNome, int idade, string senha, string email, string perfil)
         {
             Nome = nome;
             SobreNome = sobreNome;
             Idade = idade;
             Senha = senha;
             Email = email;
+            Perfil = perfil;
         }
 
 
@@ -73,7 +77,8 @@ namespace MellitusClass
                     dr.GetString(2),
                     dr.GetInt32(3),
                     dr.GetString(4),
-                    dr.GetString(5)
+                    dr.GetString(5),
+                    dr.GetString(6)
                     );
             }
             Banco.Fechar(cmd);
@@ -95,6 +100,7 @@ namespace MellitusClass
             cmd.Parameters.AddWithValue("_idade", Idade).Direction = ParameterDirection.Input;
             cmd.Parameters.AddWithValue("_senha", Senha).Direction = ParameterDirection.Input;
             cmd.Parameters.AddWithValue("_email", Email).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_perfil", Perfil).Direction = ParameterDirection.Input;
             cmd.ExecuteNonQuery();
             Id = Convert.ToInt32(cmd.Parameters["_id"].Value);
             Banco.Fechar(cmd);
@@ -120,7 +126,8 @@ namespace MellitusClass
                     dr.GetString(2),
                     dr.GetInt32(3),
                     dr.GetString(4),
-                    dr.GetString(5)
+                    dr.GetString(5),
+                    dr.GetString(6)
                     );
             }
             Banco.Fechar(cmd);
@@ -131,7 +138,7 @@ namespace MellitusClass
         /// <summary>
         /// Métodos para listar todos os usuários se o adm não iniciar com nenhuma letra na barra de pesquisa, caso o adm iniciar
         /// com qualquer letra haverá uma consulta trazendo apenas os usuários cujo as primeira letra da barra de pesquisa
-        /// ser idêntica
+        /// ser idêntica.
         /// </summary>
         /// <param name="texto"></param>
         /// <returns></returns>
@@ -158,6 +165,7 @@ namespace MellitusClass
                 user.Idade = dr.GetInt32(3);
                 user.Senha = dr.GetString(4);
                 user.Email = dr.GetString(5);
+                user.Perfil = dr.GetString(6);
                 list.Add(user);
             }
             Banco.Fechar(cmd);

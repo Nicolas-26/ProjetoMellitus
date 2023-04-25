@@ -11,9 +11,9 @@ using MellitusClass;
 
 namespace ProjetoMellitus
 {
-    public partial class Form1 : Form
+    public partial class FrmExercicio : Form
     {
-        public Form1()
+        public FrmExercicio()
         {
             InitializeComponent();
         }
@@ -31,10 +31,10 @@ namespace ProjetoMellitus
         private void button1_Click(object sender, EventArgs e)
         {
             Exercicio exer = new Exercicio(
-                0, textBox2.Text, textBox3.Text, Convert.ToDateTime(dateTimePicker1.Text),
-                TipoExercicio.ObterPorId(Convert.ToInt32(textBox5.Text))
+                0, txtTitulo.Text, txtDescricao.Text, Convert.ToDateTime(dtTempo.Text),
+                TipoExercicio.ObterPorId(Convert.ToInt32(comboBox1.Text))
                 );
-            exer.Inserir();
+            exer.InserirExercicios();
             textBox1.Text = exer.Id.ToString();
         }
 
