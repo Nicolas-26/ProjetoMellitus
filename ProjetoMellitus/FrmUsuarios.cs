@@ -21,7 +21,7 @@ namespace ProjetoMellitus
         private void btnInserir_Click(object sender, EventArgs e)
         {
             Usuario user = new Usuario(
-                txtNome.Text, txtSobrenome.Text, Convert.ToInt32(txtIdade.Text), txtSenha.Text, txtEmail.Text, txtPerfil.Text
+                txtNome.Text, txtSobrenome.Text, Convert.ToInt32(txtIdade.Text), txtSenha.Text, txtEmail.Text
                 );
             user.Inserir();
             txtId.Text = user.Id.ToString();
@@ -34,6 +34,11 @@ namespace ProjetoMellitus
                 );
             tp.InserirTipoExercicio();
             textBox1.Text = tp.Id.ToString();
+        }
+
+        private void txtPerfil_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

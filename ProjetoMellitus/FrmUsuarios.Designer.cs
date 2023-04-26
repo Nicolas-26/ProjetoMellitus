@@ -182,6 +182,7 @@
             this.txtPerfil.Name = "txtPerfil";
             this.txtPerfil.Size = new System.Drawing.Size(100, 20);
             this.txtPerfil.TabIndex = 15;
+            this.txtPerfil.TextChanged += new System.EventHandler(this.txtPerfil_TextChanged);
             // 
             // label9
             // 

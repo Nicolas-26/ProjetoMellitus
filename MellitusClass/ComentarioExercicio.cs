@@ -42,7 +42,7 @@ namespace MellitusClass
         //Métodos De Acesso
 
         /// <summary>
-        /// Inserir Campos(id, um usuário, um exercício e o comentario feito pelo usuário) na tabela comentariosexer 
+        /// Método para Inserir Campos(id, um usuário, um exercício e o comentario feito pelo usuário) na tabela comentariosexer 
         /// No Banco de Dados
         /// </summary>
         public void InserirComentariosExercicios()

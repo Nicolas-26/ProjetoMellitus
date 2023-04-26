@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Dynamic;
 
 namespace MellitusClass
 {
@@ -18,7 +19,6 @@ namespace MellitusClass
         private string senha;
         private string email;
         private string perfil;
-
 
         //propriedades
         public int Id { get { return id; } set {  id = value; } }
@@ -51,7 +51,15 @@ namespace MellitusClass
             Email = email;
             Perfil = perfil;
         }
-
+        public Usuario(string nome, string sobreNome, int idade, string senha, string email)
+        {
+            Nome = nome;
+            SobreNome = sobreNome;
+            Idade = idade;
+            Senha = senha;
+            Email = email;
+  
+        }
 
         //Métodos De Acesso
 
@@ -91,6 +99,7 @@ namespace MellitusClass
         /// </summary>
         public void Inserir()
         {
+            string caminho = "C:/Users/nicolas.oreis/Downloads/semFoto";
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_insere_usuario";
@@ -100,7 +109,7 @@ namespace MellitusClass
             cmd.Parameters.AddWithValue("_idade", Idade).Direction = ParameterDirection.Input;
             cmd.Parameters.AddWithValue("_senha", Senha).Direction = ParameterDirection.Input;
             cmd.Parameters.AddWithValue("_email", Email).Direction = ParameterDirection.Input;
-            cmd.Parameters.AddWithValue("_perfil", Perfil).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_perfil",caminho).Direction = ParameterDirection.Input;
             cmd.ExecuteNonQuery();
             Id = Convert.ToInt32(cmd.Parameters["_id"].Value);
             Banco.Fechar(cmd);

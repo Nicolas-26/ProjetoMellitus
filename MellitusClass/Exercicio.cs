@@ -47,7 +47,7 @@ namespace MellitusClass
         //Métodos De Acesso
 
         /// <summary>
-        /// Inserir Campos(id, um titulo do exercicio, a descrição do exercicio, o tempo do exercicio e o id para puxar da tabela
+        /// Método para Inserir Campos(id, um titulo do exercicio, a descrição do exercicio, o tempo do exercicio e o id para puxar da tabela
         /// tipo_exercicio(do banco de dados), o tipo do exercicio) na tabela exercicios do banco.
         /// </summary>
         public void InserirExercicios()

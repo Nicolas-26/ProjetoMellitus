@@ -52,6 +52,12 @@
     <Compile Include="FrmExercicio.Designer.cs">
       <DependentUpon>FrmExercicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmGlicemia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGlicemia.Designer.cs">
+      <DependentUpon>FrmGlicemia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmExercicio.resx">
       <DependentUpon>FrmExercicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGlicemia.resx">
+      <DependentUpon>FrmGlicemia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

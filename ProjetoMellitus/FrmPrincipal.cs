@@ -35,5 +35,11 @@ namespace ProjetoMellitus
         {
 
         }
+
+        private void glicemiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmGlicemia frmGlicemia = new FrmGlicemia();
+            frmGlicemia.Show();
+        }
     }
 }
