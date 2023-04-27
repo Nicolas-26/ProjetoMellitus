@@ -109,7 +109,7 @@ namespace MellitusClass
             cmd.Parameters.AddWithValue("_idade", Idade).Direction = ParameterDirection.Input;
             cmd.Parameters.AddWithValue("_senha", Senha).Direction = ParameterDirection.Input;
             cmd.Parameters.AddWithValue("_email", Email).Direction = ParameterDirection.Input;
-            cmd.Parameters.AddWithValue("_perfil",caminho).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_perfil", caminho).Direction = ParameterDirection.Input;
             cmd.ExecuteNonQuery();
             Id = Convert.ToInt32(cmd.Parameters["_id"].Value);
             Banco.Fechar(cmd);
@@ -129,15 +129,13 @@ namespace MellitusClass
             var dr = cmd.ExecuteReader();
             while(dr.Read())
             {
-                user = new Usuario(
-                    dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2),
-                    dr.GetInt32(3),
-                    dr.GetString(4),
-                    dr.GetString(5),
-                    dr.GetString(6)
-                    );
+                user = new Usuario();
+                user.Id = dr.GetInt32(0);
+                user.Nome = dr.GetString(1);
+                user.SobreNome = dr.GetString(2);
+                user.Idade = dr.GetInt32(3);
+                user.Senha = dr.GetString(4);
+                user.Email = dr.GetString(5);
             }
             Banco.Fechar(cmd);
             return user;

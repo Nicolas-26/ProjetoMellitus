@@ -21,7 +21,8 @@ namespace ProjetoMellitus
         private void btnInserir_Click(object sender, EventArgs e)
         {
             Glicemia gli = new Glicemia(
-                Convert.ToInt32(txtValor.Text), Convert.ToDateTime(txtData.Text), Usuario.ObterPorId(Convert.ToInt32(txtUserId.Text))
+                Convert.ToInt32(txtValor.Text), Convert.ToDateTime(txtData.Text),
+                Usuario.ObterPorId(Convert.ToInt32(txtUserId.Text))
                 );
             gli.Inserir();
             txtId.Text = gli.ID.ToString(); 

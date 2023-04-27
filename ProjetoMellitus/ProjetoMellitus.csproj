@@ -58,11 +58,23 @@
     <Compile Include="FrmGlicemia.Designer.cs">
       <DependentUpon>FrmGlicemia.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMedicacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMedicacoes.Designer.cs">
+      <DependentUpon>FrmMedicacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReceitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReceitas.Designer.cs">
+      <DependentUpon>FrmReceitas.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmUsuarios.cs">
       <SubType>Form</SubType>
@@ -78,8 +90,14 @@
     <EmbeddedResource Include="FrmGlicemia.resx">
       <DependentUpon>FrmGlicemia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMedicacoes.resx">
+      <DependentUpon>FrmMedicacoes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReceitas.resx">
+      <DependentUpon>FrmReceitas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>

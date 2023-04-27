@@ -32,6 +32,8 @@
             this.exerciciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.glicemiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.medicaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.receitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,7 +42,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exerciciosToolStripMenuItem,
             this.usuariosToolStripMenuItem,
-            this.glicemiaToolStripMenuItem});
+            this.glicemiaToolStripMenuItem,
+            this.medicaçõesToolStripMenuItem,
+            this.receitaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -68,6 +72,20 @@
             this.glicemiaToolStripMenuItem.Text = "Glicemia";
             this.glicemiaToolStripMenuItem.Click += new System.EventHandler(this.glicemiaToolStripMenuItem_Click);
             // 
+            // medicaçõesToolStripMenuItem
+            // 
+            this.medicaçõesToolStripMenuItem.Name = "medicaçõesToolStripMenuItem";
+            this.medicaçõesToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.medicaçõesToolStripMenuItem.Text = "Medicações";
+            this.medicaçõesToolStripMenuItem.Click += new System.EventHandler(this.medicaçõesToolStripMenuItem_Click);
+            // 
+            // receitaToolStripMenuItem
+            // 
+            this.receitaToolStripMenuItem.Name = "receitaToolStripMenuItem";
+            this.receitaToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.receitaToolStripMenuItem.Text = "Receita";
+            this.receitaToolStripMenuItem.Click += new System.EventHandler(this.receitaToolStripMenuItem_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -91,5 +109,7 @@
         private System.Windows.Forms.ToolStripMenuItem exerciciosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem glicemiaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem medicaçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem receitaToolStripMenuItem;
     }
 }

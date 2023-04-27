@@ -41,5 +41,17 @@ namespace ProjetoMellitus
             FrmGlicemia frmGlicemia = new FrmGlicemia();
             frmGlicemia.Show();
         }
+
+        private void medicaçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMedicacoes frmMedicacoes = new FrmMedicacoes();
+            frmMedicacoes.Show();
+        }
+
+        private void receitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReceitas frmReceitas = new FrmReceitas();
+            frmReceitas.Show();
+        }
     }
 }

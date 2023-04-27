@@ -1,4 +1,4 @@
-﻿using System;
+﻿        using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,17 +32,17 @@ namespace MellitusClass
         public Receita(int id, string titulo, string descricao, DateTime tempo, TipoReceita tipoReceita)
         {
             ID = id;
-            TipoReceita = tipoReceita;
             Titulo = titulo;
             Descricao = descricao;
             Tempo = tempo;
+            TipoReceita = tipoReceita;
         }
         public Receita(string titulo, string descricao, DateTime tempo, TipoReceita tipoReceita)
         {
-            TipoReceita = tipoReceita;
             Titulo = titulo;
             Descricao = descricao;
             Tempo = tempo;
+            TipoReceita = tipoReceita;
         }
         public Receita(string titulo)
         {
@@ -62,10 +62,10 @@ namespace MellitusClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_insere_receita";
             cmd.Parameters.AddWithValue("_id", 0).Direction = ParameterDirection.Output;
-            cmd.Parameters.AddWithValue("_id_tipo", TipoReceita.Id).Direction = ParameterDirection.Input;
             cmd.Parameters.AddWithValue("_titulo", Titulo).Direction = ParameterDirection.Input;
             cmd.Parameters.AddWithValue("_descricao", Descricao).Direction = ParameterDirection.Input;
             cmd.Parameters.AddWithValue("_tempo", Tempo).Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("_id_tipo", TipoReceita.Id).Direction = ParameterDirection.Input;
             cmd.ExecuteNonQuery();
             ID = Convert.ToInt32(cmd.Parameters["_id"].Value);
             Banco.Fechar(cmd);

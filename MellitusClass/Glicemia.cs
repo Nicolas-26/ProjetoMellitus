@@ -48,7 +48,7 @@ namespace MellitusClass
         /// </summary>
         public void Inserir()
         {
-            var cmd = Banco.Abrir();
+            var cmd = Banco.Abrir();    
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_insere_glicemia";
             cmd.Parameters.AddWithValue("_id", 0).Direction = ParameterDirection.Output;

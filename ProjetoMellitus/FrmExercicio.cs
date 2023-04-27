@@ -42,5 +42,14 @@ namespace ProjetoMellitus
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            TipoExercicio te = new TipoExercicio(
+                txtTipo.Text
+                );
+            te.InserirTipoExercicio();
+            txtId_TipoE.Text = te.Id.ToString();
+        }
     }
 }
