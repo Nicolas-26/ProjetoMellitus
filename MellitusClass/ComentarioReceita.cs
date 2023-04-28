@@ -48,14 +48,14 @@ namespace MellitusClass
         public void InserirComentariosReceita()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert comentariosrec (id_user, id_rec, comentarios) values (@user, @rec, @comentarios)";
+            cmd.CommandText = "insert comentariosrec (comentarios, id_user, id_rec) values (@comentarios, @user, @rec)";
+            cmd.Parameters.Add("@comentarios", MySqlDbType.VarChar).Value = Comentario;
             cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = Usuarios.Id;
             cmd.Parameters.Add("@rec", MySqlDbType.Int32).Value = Receitas.ID;
-            cmd.Parameters.Add("@comentarios", MySqlDbType.VarChar).Value = Comentario;
             cmd.ExecuteNonQuery();
             cmd.CommandText = "select @@identity";
             Id = Convert.ToInt32(cmd.ExecuteScalar());
-            Banco.Fechar(cmd);
+            Banco.Fechar(cmd);  
         }
 
 
@@ -74,9 +74,9 @@ namespace MellitusClass
             {
                 rct = new ComentarioReceita(
                     dr.GetInt32(0),
-                    Usuario.ObterPorId(Convert.ToInt32(dr.GetInt32(1))),
-                    Receita.ObterPorId(Convert.ToInt32(dr.GetInt32(2))),
-                    dr.GetString(3)
+                    Usuario.ObterPorId(Convert.ToInt32(dr.GetInt32(2))),
+                    Receita.ObterPorId(Convert.ToInt32(dr.GetInt32(3))),
+                    dr.GetString(1)
                     );
             }
             Banco.Fechar(cmd);
@@ -103,9 +103,9 @@ namespace MellitusClass
             {
                 crt = new ComentarioReceita();
                 crt.Id = dr.GetInt32(0);
-                crt.Usuarios = Usuario.ObterPorId(dr.GetInt32(1));
-                crt.Receitas = Receita.ObterPorId(dr.GetInt32(2));
-                crt.Comentario = dr.GetString(3);
+                crt.Usuarios = Usuario.ObterPorId(dr.GetInt32(2));
+                crt.Receitas = Receita.ObterPorId(dr.GetInt32(3));
+                crt.Comentario = dr.GetString(1);
                 cr.Add(crt);
             }
             Banco.Fechar(cmd);
@@ -129,9 +129,9 @@ namespace MellitusClass
             {
                 com = new ComentarioReceita();
                 com.Id = dr.GetInt32(0);
-                com.Usuarios = Usuario.ObterPorId(dr.GetInt32(1));
-                com.Receitas = Receita.ObterPorId(dr.GetInt32(2));
-                com.Comentario = dr.GetString(3);
+                com.Usuarios = Usuario.ObterPorId(dr.GetInt32(2));
+                com.Receitas = Receita.ObterPorId(dr.GetInt32(3));
+                com.Comentario = dr.GetString(1);
                 list.Add(com);
             }
             Banco.Fechar(cmd);
@@ -155,9 +155,9 @@ namespace MellitusClass
             {
                 us = new ComentarioReceita();
                 us.Id = dr.GetInt32(0);
-                us.Usuarios = Usuario.ObterPorId(dr.GetInt32(1));
-                us.Receitas = Receita.ObterPorId(dr.GetInt32(2));
-                us.Comentario = dr.GetString(3);
+                us.Usuarios = Usuario.ObterPorId(dr.GetInt32(2));
+                us.Receitas = Receita.ObterPorId(dr.GetInt32(3));
+                us.Comentario = dr.GetString(1);
                 lista.Add(us);
             }
             Banco.Fechar(cmd);
@@ -180,9 +180,9 @@ namespace MellitusClass
             {
                 rec = new ComentarioReceita();
                 rec.Id = dr.GetInt32(0);
-                rec.Usuarios = Usuario.ObterPorId(dr.GetInt32(1));
-                rec.Receitas = Receita.ObterPorId(dr.GetInt32(2));
-                rec.Comentario = dr.GetString(3);
+                rec.Usuarios = Usuario.ObterPorId(dr.GetInt32(2));
+                rec.Receitas = Receita.ObterPorId(dr.GetInt32(3));
+                rec.Comentario = dr.GetString(1);
                 lcr.Add(rec);
             }
             Banco.Fechar(cmd);

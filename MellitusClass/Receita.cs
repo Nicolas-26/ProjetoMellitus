@@ -14,7 +14,7 @@ namespace MellitusClass
         private int id;
         private string titulo;
         private string descricao;
-        private DateTime tempo;
+        private int tempo;
 
 
         //propriedades
@@ -22,14 +22,14 @@ namespace MellitusClass
         public TipoReceita TipoReceita { get; set; }
         public string Titulo { get { return titulo; } set { titulo = value; } }
         public string Descricao { get { return descricao; } set { descricao = value; } }
-        public DateTime Tempo { get { return tempo; } set { tempo = value; } }
+        public int Tempo { get { return tempo; } set { tempo = value; } }
 
 
         //Métodos Construtores
 
         public Receita() { }    
 
-        public Receita(int id, string titulo, string descricao, DateTime tempo, TipoReceita tipoReceita)
+        public Receita(int id, string titulo, string descricao, int tempo, TipoReceita tipoReceita)
         {
             ID = id;
             Titulo = titulo;
@@ -37,7 +37,7 @@ namespace MellitusClass
             Tempo = tempo;
             TipoReceita = tipoReceita;
         }
-        public Receita(string titulo, string descricao, DateTime tempo, TipoReceita tipoReceita)
+        public Receita(string titulo, string descricao, int tempo, TipoReceita tipoReceita)
         {
             Titulo = titulo;
             Descricao = descricao;
@@ -85,12 +85,7 @@ namespace MellitusClass
             var dr = cmd.ExecuteReader();
             while(dr.Read())
             {
-                receita = new Receita();
-                receita.ID = dr.GetInt32(0);
-                receita.TipoReceita = TipoReceita.ObterPorId(dr.GetInt32(1));
-                receita.Titulo = dr.GetString(2);
-                receita.Descricao = dr.GetString(3);
-                receita.Tempo = dr.GetDateTime(4);
+                receita = new Receita(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetInt32(3), TipoReceita.ObterPorId((4)));
             }
             Banco.Fechar(cmd);
             return receita;
@@ -115,7 +110,7 @@ namespace MellitusClass
                 RC.TipoReceita = TipoReceita.ObterPorId(dr.GetInt32(1));
                 RC.Titulo = dr.GetString(2);
                 RC.Descricao = dr.GetString(3);
-                RC.Tempo = dr.GetDateTime(4);
+                RC.Tempo = dr.GetInt32(4);
                 list.Add(RC);
             }
             Banco.Fechar(cmd);
@@ -161,7 +156,7 @@ namespace MellitusClass
                 rec.TipoReceita = TipoReceita.ObterPorId(dr.GetInt32(1));
                 rec.Titulo = dr.GetString(2);
                 rec.Descricao = dr.GetString(3);
-                rec.Tempo = dr.GetDateTime(4);
+                rec.Tempo = dr.GetInt32(4);
                 receitas.Add(rec);
             }
             Banco.Fechar(cmd);

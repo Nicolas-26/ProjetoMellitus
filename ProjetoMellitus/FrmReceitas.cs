@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,11 +22,11 @@ namespace ProjetoMellitus
         private void button1_Click(object sender, EventArgs e)
         {
             Receita rc = new Receita(
-                txtTitulo.Text, txtDescricao.Text, Convert.ToDateTime(txtTempo.Text),
+                txtTitulo.Text, txtDescricao.Text, Convert.ToInt32(txtTempo.Text),
                 TipoReceita.ObterPorId(Convert.ToInt32(txtIdTipo.Text))
-                );
+                );  
             rc.InserirReceitas();
-            txtId.Text = rc.ID.ToString();
+            txtId.Text = rc.ID.ToString();  
         }
 
         private void button2_Click(object sender, EventArgs e)

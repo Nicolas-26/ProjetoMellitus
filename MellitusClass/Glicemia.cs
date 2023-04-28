@@ -48,21 +48,20 @@ namespace MellitusClass
         /// </summary>
         public void Inserir()
         {
-            var cmd = Banco.Abrir();    
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_insere_glicemia";
-            cmd.Parameters.AddWithValue("_id", 0).Direction = ParameterDirection.Output;
-            cmd.Parameters.AddWithValue("_valor", Valor).Direction = ParameterDirection.Input;
-            cmd.Parameters.AddWithValue("_data", Data).Direction = ParameterDirection.Input;
-            cmd.Parameters.AddWithValue("_id_user", Usuario.Id).Direction = ParameterDirection.Input;
+            var cmd = Banco.Abrir();
+            cmd.CommandText = "insert glicemia (valor, data, id_user) values (@valor, @data, @user)";
+            cmd.Parameters.Add("@valor", MySqlDbType.Int32).Value = Valor;
+            cmd.Parameters.Add("@data", MySqlDbType.Date).Value = Data;
+            cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = Usuario.Id;
             cmd.ExecuteNonQuery();
-            ID = Convert.ToInt32(cmd.Parameters["_id"].Value);
+            cmd.CommandText = "select @@identity";
+            ID = Convert.ToInt32(cmd.ExecuteScalar());
             Banco.Fechar(cmd);
         }
 
 
         /// <summary>
-        /// Método para obter por id a glicemia.
+        /// Método para obter por id na tabela glicemia do banco de dados.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
