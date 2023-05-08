@@ -12,14 +12,14 @@ namespace MellitusClass
     {
         //atributos
         private int id;
-        private DateTime alarme;
+        private string alarme;
         private string instrucao;
         private string remedio;
 
 
         //propriedades
         public int Id { get { return id; } set {  id = value; } }
-        public DateTime Alarme { get {  return alarme; } set {  alarme = value; } }
+        public string Alarme { get {  return alarme; } set {  alarme = value; } }
         public string Instrucao { get {  return instrucao; } set {  instrucao = value; } }
         public string Remedio { get {  return remedio; } set {  remedio = value; } }
         public Usuario Usuario { get; set; }
@@ -27,7 +27,7 @@ namespace MellitusClass
 
         //Métodos Construtores
         public Medicacao() { }
-        public Medicacao(int id, DateTime alarme, string instrucao, string remedio, Usuario usuario)
+        public Medicacao(int id, string alarme, string instrucao, string remedio, Usuario usuario)
         {
             Id = id;
             Alarme = alarme;
@@ -35,12 +35,18 @@ namespace MellitusClass
             Remedio = remedio;
             Usuario = usuario;
         }
-        public Medicacao(DateTime alarme, string instrucao, string remedio, Usuario usuario)
+        public Medicacao(string alarme, string instrucao, string remedio, Usuario usuario)
         {
             Alarme = alarme;
             Instrucao = instrucao;
             Remedio = remedio;
             Usuario = usuario;
+        }
+        public Medicacao(string alarme, string instrucao, string remedio)
+        {
+            Alarme = alarme;
+            Instrucao = instrucao;
+            Remedio = remedio;
         }
 
 
@@ -81,7 +87,7 @@ namespace MellitusClass
             {
                 med = new Medicacao(
                     dr.GetInt32(0),
-                    dr.GetDateTime(1),
+                    dr.GetString(1),
                     dr.GetString(2),
                     dr.GetString(3),
                     Usuario.ObterPorId(dr.GetInt32(4))
@@ -109,7 +115,7 @@ namespace MellitusClass
             {
                 td = new Medicacao();
                 td.Id = dr.GetInt32(0);
-                td.Alarme = dr.GetDateTime(1);
+                td.Alarme = dr.GetString(1);
                 td.Instrucao = dr.GetString(2);
                 td.Remedio = dr.GetString(3);
                 td.Usuario = Usuario.ObterPorId(dr.GetInt32(4));
@@ -135,7 +141,7 @@ namespace MellitusClass
             {
                 tudo = new Medicacao();
                 tudo.Id = dr.GetInt32(0);
-                tudo.Alarme = dr.GetDateTime(1);
+                tudo.Alarme = dr.GetString(1);
                 tudo.Instrucao = dr.GetString(2);
                 tudo.Remedio = dr.GetString(3);
                 tudo.Usuario = Usuario.ObterPorId(dr.GetInt32(4));
@@ -154,7 +160,7 @@ namespace MellitusClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandText = "update medicacoes set alarme = @alarme, instrucao = @instrucao, remedio = @remedio where id = " + id;
-            cmd.Parameters.Add("@alarme", MySqlDbType.DateTime).Value = Alarme;
+            cmd.Parameters.Add("@alarme", MySqlDbType.VarChar).Value = Alarme;
             cmd.Parameters.Add("@instrucao", MySqlDbType.Text).Value = Instrucao;
             cmd.Parameters.Add("remedio", MySqlDbType.VarChar).Value = Remedio;
             cmd.ExecuteNonQuery();

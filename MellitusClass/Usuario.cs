@@ -58,7 +58,13 @@ namespace MellitusClass
             Idade = idade;
             Senha = senha;
             Email = email;
-  
+        }
+        public Usuario(string nome, string sobreNome, int idade, string senha)
+        {
+            Nome = nome;
+            SobreNome = sobreNome;
+            Idade = idade;
+            Senha = senha;
         }
 
         //Métodos De Acesso
@@ -172,7 +178,6 @@ namespace MellitusClass
                 user.Idade = dr.GetInt32(3);
                 user.Senha = dr.GetString(4);
                 user.Email = dr.GetString(5);
-                user.Perfil = dr.GetString(6);
                 list.Add(user);
             }
             Banco.Fechar(cmd);

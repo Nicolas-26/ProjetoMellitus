@@ -14,7 +14,7 @@ namespace MellitusClass
         private int id;
         private string titulo;
         private string descricao;
-        private int tempo;
+        private string tempo;
 
 
         //propriedades
@@ -22,14 +22,14 @@ namespace MellitusClass
         public TipoReceita TipoReceita { get; set; }
         public string Titulo { get { return titulo; } set { titulo = value; } }
         public string Descricao { get { return descricao; } set { descricao = value; } }
-        public int Tempo { get { return tempo; } set { tempo = value; } }
+        public string Tempo { get { return tempo; } set { tempo = value; } }
 
 
         //Métodos Construtores
 
         public Receita() { }    
 
-        public Receita(int id, string titulo, string descricao, int tempo, TipoReceita tipoReceita)
+        public Receita(int id, string titulo, string descricao, string tempo, TipoReceita tipoReceita)
         {
             ID = id;
             Titulo = titulo;
@@ -37,12 +37,18 @@ namespace MellitusClass
             Tempo = tempo;
             TipoReceita = tipoReceita;
         }
-        public Receita(string titulo, string descricao, int tempo, TipoReceita tipoReceita)
+        public Receita(string titulo, string descricao, string tempo, TipoReceita tipoReceita)
         {
             Titulo = titulo;
             Descricao = descricao;
             Tempo = tempo;
             TipoReceita = tipoReceita;
+        }
+        public Receita(string titulo, string descricao, string tempo)
+        {
+            Titulo = titulo;
+            Descricao = descricao;
+            Tempo = tempo;
         }
         public Receita(string titulo)
         {
@@ -85,7 +91,7 @@ namespace MellitusClass
             var dr = cmd.ExecuteReader();
             while(dr.Read())
             {
-                receita = new Receita(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetInt32(3), TipoReceita.ObterPorId((4)));
+                receita = new Receita(dr.GetInt32(0), dr.GetString(2), dr.GetString(3), dr.GetString(4), TipoReceita.ObterPorId(dr.GetInt32(1)));
             }
             Banco.Fechar(cmd);
             return receita;
@@ -110,7 +116,7 @@ namespace MellitusClass
                 RC.TipoReceita = TipoReceita.ObterPorId(dr.GetInt32(1));
                 RC.Titulo = dr.GetString(2);
                 RC.Descricao = dr.GetString(3);
-                RC.Tempo = dr.GetInt32(4);
+                RC.Tempo = dr.GetString(4);
                 list.Add(RC);
             }
             Banco.Fechar(cmd);
@@ -156,7 +162,7 @@ namespace MellitusClass
                 rec.TipoReceita = TipoReceita.ObterPorId(dr.GetInt32(1));
                 rec.Titulo = dr.GetString(2);
                 rec.Descricao = dr.GetString(3);
-                rec.Tempo = dr.GetInt32(4);
+                rec.Tempo = dr.GetString(4);
                 receitas.Add(rec);
             }
             Banco.Fechar(cmd);
@@ -174,7 +180,7 @@ namespace MellitusClass
             cmd.CommandText = "update receitas set titulo = @titulo, descricao = @desc, tempo = @tempo where id = " + id;
             cmd.Parameters.Add("@titulo", MySqlDbType.VarChar).Value = Titulo;
             cmd.Parameters.Add("@desc",MySqlDbType.VarChar).Value = Descricao;
-            cmd.Parameters.Add("@tempo", MySqlDbType.DateTime).Value = Tempo;
+            cmd.Parameters.Add("@tempo", MySqlDbType.VarChar).Value = Tempo;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

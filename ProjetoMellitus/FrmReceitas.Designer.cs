@@ -41,52 +41,54 @@
             this.txtTempo = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.txtIdTipoReceita = new System.Windows.Forms.TextBox();
             this.txtTipo = new System.Windows.Forms.TextBox();
+            this.txtIdTipoReceita = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.txtIdVideoR = new System.Windows.Forms.TextBox();
-            this.txtVideos = new System.Windows.Forms.TextBox();
-            this.txtIdReceita = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.txtIdReceita = new System.Windows.Forms.TextBox();
+            this.txtVideos = new System.Windows.Forms.TextBox();
+            this.txtIdVideoR = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.txtComentarios = new System.Windows.Forms.TextBox();
+            this.txtIdRecComentario = new System.Windows.Forms.TextBox();
+            this.txtIdUserComentario = new System.Windows.Forms.TextBox();
+            this.txtIdComentario = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtQuant = new System.Windows.Forms.TextBox();
+            this.txtIdRecLike = new System.Windows.Forms.TextBox();
+            this.txtIdUserLike = new System.Windows.Forms.TextBox();
+            this.txtIdLike = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtImagens = new System.Windows.Forms.TextBox();
+            this.txtIdRecImagem = new System.Windows.Forms.TextBox();
+            this.txtIdImagem = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.txtIdComentario = new System.Windows.Forms.TextBox();
-            this.txtIdUserComentario = new System.Windows.Forms.TextBox();
-            this.txtIdRecComentario = new System.Windows.Forms.TextBox();
-            this.txtComentarios = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.txtIdLike = new System.Windows.Forms.TextBox();
-            this.txtIdUserLike = new System.Windows.Forms.TextBox();
-            this.txtIdRecLike = new System.Windows.Forms.TextBox();
-            this.txtQuant = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.txtIdImagem = new System.Windows.Forms.TextBox();
-            this.txtIdRecImagem = new System.Windows.Forms.TextBox();
-            this.txtImagens = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnConsultar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -186,7 +188,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(273, 314);
+            this.button1.Location = new System.Drawing.Point(273, 142);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 11;
@@ -208,33 +210,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo_Receita";
             // 
-            // label7
+            // txtTipo
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(533, 61);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(257, 20);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Inserir Na Tabela Tipo_Receita";
+            this.txtTipo.Location = new System.Drawing.Point(20, 123);
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.Size = new System.Drawing.Size(100, 20);
+            this.txtTipo.TabIndex = 4;
             // 
-            // label8
+            // txtIdTipoReceita
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 37);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(18, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "ID";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 103);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(28, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Tipo";
+            this.txtIdTipoReceita.Location = new System.Drawing.Point(20, 53);
+            this.txtIdTipoReceita.Name = "txtIdTipoReceita";
+            this.txtIdTipoReceita.Size = new System.Drawing.Size(100, 20);
+            this.txtIdTipoReceita.TabIndex = 3;
             // 
             // button2
             // 
@@ -246,19 +234,33 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // txtIdTipoReceita
+            // label9
             // 
-            this.txtIdTipoReceita.Location = new System.Drawing.Point(20, 53);
-            this.txtIdTipoReceita.Name = "txtIdTipoReceita";
-            this.txtIdTipoReceita.Size = new System.Drawing.Size(100, 20);
-            this.txtIdTipoReceita.TabIndex = 3;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 103);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Tipo";
             // 
-            // txtTipo
+            // label8
             // 
-            this.txtTipo.Location = new System.Drawing.Point(20, 123);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(100, 20);
-            this.txtTipo.TabIndex = 4;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(18, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "ID";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(533, 61);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(257, 20);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Inserir Na Tabela Tipo_Receita";
             // 
             // label10
             // 
@@ -286,23 +288,36 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Video_Receita";
             // 
-            // label11
+            // label13
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(23, 17);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(18, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "ID";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(23, 63);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Id_Receita";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
-            // label12
+            // txtIdReceita
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(23, 114);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Videos";
+            this.txtIdReceita.Location = new System.Drawing.Point(26, 79);
+            this.txtIdReceita.Name = "txtIdReceita";
+            this.txtIdReceita.Size = new System.Drawing.Size(100, 20);
+            this.txtIdReceita.TabIndex = 5;
+            // 
+            // txtVideos
+            // 
+            this.txtVideos.Location = new System.Drawing.Point(26, 126);
+            this.txtVideos.Name = "txtVideos";
+            this.txtVideos.Size = new System.Drawing.Size(100, 20);
+            this.txtVideos.TabIndex = 4;
+            // 
+            // txtIdVideoR
+            // 
+            this.txtIdVideoR.Location = new System.Drawing.Point(26, 33);
+            this.txtIdVideoR.Name = "txtIdVideoR";
+            this.txtIdVideoR.Size = new System.Drawing.Size(100, 20);
+            this.txtIdVideoR.TabIndex = 3;
             // 
             // button3
             // 
@@ -314,36 +329,23 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // txtIdVideoR
+            // label12
             // 
-            this.txtIdVideoR.Location = new System.Drawing.Point(26, 33);
-            this.txtIdVideoR.Name = "txtIdVideoR";
-            this.txtIdVideoR.Size = new System.Drawing.Size(100, 20);
-            this.txtIdVideoR.TabIndex = 3;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(23, 114);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(39, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Videos";
             // 
-            // txtVideos
+            // label11
             // 
-            this.txtVideos.Location = new System.Drawing.Point(26, 126);
-            this.txtVideos.Name = "txtVideos";
-            this.txtVideos.Size = new System.Drawing.Size(100, 20);
-            this.txtVideos.TabIndex = 4;
-            // 
-            // txtIdReceita
-            // 
-            this.txtIdReceita.Location = new System.Drawing.Point(26, 79);
-            this.txtIdReceita.Name = "txtIdReceita";
-            this.txtIdReceita.Size = new System.Drawing.Size(100, 20);
-            this.txtIdReceita.TabIndex = 5;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(23, 63);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 13);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Id_Receita";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(23, 17);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "ID";
             // 
             // groupBox3
             // 
@@ -363,6 +365,80 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Comentário_Receita";
             // 
+            // txtComentarios
+            // 
+            this.txtComentarios.Location = new System.Drawing.Point(77, 126);
+            this.txtComentarios.Name = "txtComentarios";
+            this.txtComentarios.Size = new System.Drawing.Size(100, 20);
+            this.txtComentarios.TabIndex = 8;
+            // 
+            // txtIdRecComentario
+            // 
+            this.txtIdRecComentario.Location = new System.Drawing.Point(77, 96);
+            this.txtIdRecComentario.Name = "txtIdRecComentario";
+            this.txtIdRecComentario.Size = new System.Drawing.Size(100, 20);
+            this.txtIdRecComentario.TabIndex = 7;
+            // 
+            // txtIdUserComentario
+            // 
+            this.txtIdUserComentario.Location = new System.Drawing.Point(77, 67);
+            this.txtIdUserComentario.Name = "txtIdUserComentario";
+            this.txtIdUserComentario.Size = new System.Drawing.Size(100, 20);
+            this.txtIdUserComentario.TabIndex = 6;
+            // 
+            // txtIdComentario
+            // 
+            this.txtIdComentario.Location = new System.Drawing.Point(77, 35);
+            this.txtIdComentario.Name = "txtIdComentario";
+            this.txtIdComentario.Size = new System.Drawing.Size(100, 20);
+            this.txtIdComentario.TabIndex = 5;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(51, 169);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(142, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "InserirComentarioReceita";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 126);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 13);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Comentários";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(15, 103);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(42, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Id_Rec";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 70);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Id_User";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(39, 38);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(18, 13);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "ID";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.txtQuant);
@@ -381,6 +457,80 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Like_Receita";
             // 
+            // txtQuant
+            // 
+            this.txtQuant.Location = new System.Drawing.Point(58, 132);
+            this.txtQuant.Name = "txtQuant";
+            this.txtQuant.Size = new System.Drawing.Size(100, 20);
+            this.txtQuant.TabIndex = 8;
+            // 
+            // txtIdRecLike
+            // 
+            this.txtIdRecLike.Location = new System.Drawing.Point(58, 100);
+            this.txtIdRecLike.Name = "txtIdRecLike";
+            this.txtIdRecLike.Size = new System.Drawing.Size(100, 20);
+            this.txtIdRecLike.TabIndex = 7;
+            // 
+            // txtIdUserLike
+            // 
+            this.txtIdUserLike.Location = new System.Drawing.Point(58, 67);
+            this.txtIdUserLike.Name = "txtIdUserLike";
+            this.txtIdUserLike.Size = new System.Drawing.Size(100, 20);
+            this.txtIdUserLike.TabIndex = 6;
+            // 
+            // txtIdLike
+            // 
+            this.txtIdLike.Location = new System.Drawing.Point(58, 32);
+            this.txtIdLike.Name = "txtIdLike";
+            this.txtIdLike.Size = new System.Drawing.Size(100, 20);
+            this.txtIdLike.TabIndex = 5;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(58, 169);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(100, 23);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "InserirLikeReceita";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 67);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(44, 13);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "Id_User";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(12, 135);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(36, 13);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Quant";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 103);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(42, 13);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Id_Rec";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(11, 35);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(18, 13);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "ID";
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.txtImagens);
@@ -397,41 +547,63 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Imagem_Receita";
             // 
-            // label14
+            // txtImagens
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(39, 38);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(18, 13);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "ID";
+            this.txtImagens.Location = new System.Drawing.Point(72, 119);
+            this.txtImagens.Name = "txtImagens";
+            this.txtImagens.Size = new System.Drawing.Size(100, 20);
+            this.txtImagens.TabIndex = 6;
             // 
-            // label15
+            // txtIdRecImagem
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(15, 70);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 13);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Id_User";
+            this.txtIdRecImagem.Location = new System.Drawing.Point(72, 85);
+            this.txtIdRecImagem.Name = "txtIdRecImagem";
+            this.txtIdRecImagem.Size = new System.Drawing.Size(100, 20);
+            this.txtIdRecImagem.TabIndex = 5;
             // 
-            // label16
+            // txtIdImagem
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(15, 103);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(42, 13);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Id_Rec";
+            this.txtIdImagem.Location = new System.Drawing.Point(72, 48);
+            this.txtIdImagem.Name = "txtIdImagem";
+            this.txtIdImagem.Size = new System.Drawing.Size(100, 20);
+            this.txtIdImagem.TabIndex = 4;
             // 
-            // label17
+            // button6
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 126);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 13);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Comentários";
+            this.button6.Location = new System.Drawing.Point(51, 169);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 23);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "InserirImgReceita";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(18, 126);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(47, 13);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Imagens";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(18, 88);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(42, 13);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Id_Rec";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(23, 51);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(18, 13);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "ID";
             // 
             // label18
             // 
@@ -453,176 +625,6 @@
             this.label19.TabIndex = 20;
             this.label19.Text = "Inserir Na Tabela LikeRec";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(51, 169);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(142, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "InserirComentarioReceita";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // txtIdComentario
-            // 
-            this.txtIdComentario.Location = new System.Drawing.Point(77, 35);
-            this.txtIdComentario.Name = "txtIdComentario";
-            this.txtIdComentario.Size = new System.Drawing.Size(100, 20);
-            this.txtIdComentario.TabIndex = 5;
-            // 
-            // txtIdUserComentario
-            // 
-            this.txtIdUserComentario.Location = new System.Drawing.Point(77, 67);
-            this.txtIdUserComentario.Name = "txtIdUserComentario";
-            this.txtIdUserComentario.Size = new System.Drawing.Size(100, 20);
-            this.txtIdUserComentario.TabIndex = 6;
-            // 
-            // txtIdRecComentario
-            // 
-            this.txtIdRecComentario.Location = new System.Drawing.Point(77, 96);
-            this.txtIdRecComentario.Name = "txtIdRecComentario";
-            this.txtIdRecComentario.Size = new System.Drawing.Size(100, 20);
-            this.txtIdRecComentario.TabIndex = 7;
-            // 
-            // txtComentarios
-            // 
-            this.txtComentarios.Location = new System.Drawing.Point(77, 126);
-            this.txtComentarios.Name = "txtComentarios";
-            this.txtComentarios.Size = new System.Drawing.Size(100, 20);
-            this.txtComentarios.TabIndex = 8;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(11, 35);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(18, 13);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "ID";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 103);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(42, 13);
-            this.label21.TabIndex = 1;
-            this.label21.Text = "Id_Rec";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(12, 135);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(36, 13);
-            this.label22.TabIndex = 2;
-            this.label22.Text = "Quant";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 67);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(44, 13);
-            this.label23.TabIndex = 3;
-            this.label23.Text = "Id_User";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(58, 169);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "InserirLikeReceita";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // txtIdLike
-            // 
-            this.txtIdLike.Location = new System.Drawing.Point(58, 32);
-            this.txtIdLike.Name = "txtIdLike";
-            this.txtIdLike.Size = new System.Drawing.Size(100, 20);
-            this.txtIdLike.TabIndex = 5;
-            // 
-            // txtIdUserLike
-            // 
-            this.txtIdUserLike.Location = new System.Drawing.Point(58, 67);
-            this.txtIdUserLike.Name = "txtIdUserLike";
-            this.txtIdUserLike.Size = new System.Drawing.Size(100, 20);
-            this.txtIdUserLike.TabIndex = 6;
-            // 
-            // txtIdRecLike
-            // 
-            this.txtIdRecLike.Location = new System.Drawing.Point(58, 100);
-            this.txtIdRecLike.Name = "txtIdRecLike";
-            this.txtIdRecLike.Size = new System.Drawing.Size(100, 20);
-            this.txtIdRecLike.TabIndex = 7;
-            // 
-            // txtQuant
-            // 
-            this.txtQuant.Location = new System.Drawing.Point(58, 132);
-            this.txtQuant.Name = "txtQuant";
-            this.txtQuant.Size = new System.Drawing.Size(100, 20);
-            this.txtQuant.TabIndex = 8;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(23, 51);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(18, 13);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "ID";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(18, 88);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(42, 13);
-            this.label25.TabIndex = 1;
-            this.label25.Text = "Id_Rec";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(18, 126);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(47, 13);
-            this.label26.TabIndex = 2;
-            this.label26.Text = "Imagens";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(51, 169);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 23);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "InserirImgReceita";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // txtIdImagem
-            // 
-            this.txtIdImagem.Location = new System.Drawing.Point(72, 48);
-            this.txtIdImagem.Name = "txtIdImagem";
-            this.txtIdImagem.Size = new System.Drawing.Size(100, 20);
-            this.txtIdImagem.TabIndex = 4;
-            // 
-            // txtIdRecImagem
-            // 
-            this.txtIdRecImagem.Location = new System.Drawing.Point(72, 85);
-            this.txtIdRecImagem.Name = "txtIdRecImagem";
-            this.txtIdRecImagem.Size = new System.Drawing.Size(100, 20);
-            this.txtIdRecImagem.TabIndex = 5;
-            // 
-            // txtImagens
-            // 
-            this.txtImagens.Location = new System.Drawing.Point(72, 119);
-            this.txtImagens.Name = "txtImagens";
-            this.txtImagens.Size = new System.Drawing.Size(100, 20);
-            this.txtImagens.TabIndex = 6;
-            // 
             // label27
             // 
             this.label27.AutoSize = true;
@@ -633,11 +635,33 @@
             this.label27.TabIndex = 21;
             this.label27.Text = "Inserir Na Tabela ImagemRec";
             // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(273, 275);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 22;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Location = new System.Drawing.Point(273, 212);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(75, 23);
+            this.btnConsultar.TabIndex = 23;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
             // FrmReceitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1285, 685);
+            this.Controls.Add(this.btnConsultar);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
@@ -738,5 +762,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnConsultar;
     }
 }

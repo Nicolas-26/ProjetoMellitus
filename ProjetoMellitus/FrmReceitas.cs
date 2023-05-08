@@ -22,7 +22,7 @@ namespace ProjetoMellitus
         private void button1_Click(object sender, EventArgs e)
         {
             Receita rc = new Receita(
-                txtTitulo.Text, txtDescricao.Text, Convert.ToInt32(txtTempo.Text),
+                txtTitulo.Text, txtDescricao.Text, txtTempo.Text,
                 TipoReceita.ObterPorId(Convert.ToInt32(txtIdTipo.Text))
                 );  
             rc.InserirReceitas();
@@ -82,6 +82,21 @@ namespace ProjetoMellitus
                 );
             ir.InseririmgReceitas();
             txtIdImagem.Text = ir.Id.ToString();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Receita rc = new Receita(txtTitulo.Text, txtDescricao.Text, txtTempo.Text);
+            rc.Atualizar(Convert.ToInt32(txtId.Text));
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            Receita rec = Receita.ObterPorId(Convert.ToInt32(txtId.Text));
+            txtIdTipo.Text = rec.TipoReceita.Id.ToString();
+            txtTitulo.Text = rec.Titulo;
+            txtDescricao.Text = rec.Descricao;
+            txtTempo.Text = rec.Tempo;
         }
     }
 }

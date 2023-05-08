@@ -14,20 +14,20 @@ namespace MellitusClass
         private int id;
         private string titulo;
         private string descricao;
-        private DateTime tempo;
+        private string tempo;
 
 
         //propriedades
         public int Id { get { return id; } set { id = value; } }
         public string Titulo { get { return titulo; } set { titulo = value; } }
         public string Descricao { get { return descricao; } set { descricao = value; } }
-        public DateTime Tempo { get { return tempo; } set { tempo = value; } }
+        public string Tempo { get { return tempo; } set { tempo = value; } }
         public TipoExercicio TipoExercicio { get; set; }
 
 
         //Métodos Construtores
         public Exercicio() { }
-        public Exercicio(int id, string titulo, string descricao, DateTime tempo, TipoExercicio tipoExercicio)
+        public Exercicio(int id, string titulo, string descricao, string tempo, TipoExercicio tipoExercicio)
         {
             Id = id;
             Titulo = titulo;
@@ -35,7 +35,7 @@ namespace MellitusClass
             Tempo = tempo;
             TipoExercicio = tipoExercicio;
         }
-        public Exercicio(string titulo, string descricao, DateTime tempo, TipoExercicio tipoExercicio)
+        public Exercicio(string titulo, string descricao, string tempo, TipoExercicio tipoExercicio)
         {
             Titulo = titulo;
             Descricao = descricao;
@@ -83,8 +83,8 @@ namespace MellitusClass
                     dr.GetInt32(0),
                     dr.GetString(1),
                     dr.GetString(2),
-                    dr.GetDateTime(3),
-                    TipoExercicio.ObterPorId(dr.GetInt32(4))
+                    dr.GetString(3),
+                    TipoExercicio.ObterPorId(Convert.ToInt32(dr.GetInt32(4)))
                     );
             }
             Banco.Fechar(cmd);
@@ -110,7 +110,7 @@ namespace MellitusClass
                 td.Id = dr.GetInt32(0);
                 td.Titulo = dr.GetString(1);
                 td.Descricao = dr.GetString(2);
-                td.Tempo = dr.GetDateTime(3);
+                td.Tempo = dr.GetString(3);
                 td.TipoExercicio = TipoExercicio.ObterPorId(dr.GetInt32(4));
                 lista.Add(td);
             }
@@ -146,7 +146,7 @@ namespace MellitusClass
                 exer.Id = dr.GetInt32(0);
                 exer.Titulo = dr.GetString(1);
                 exer.Descricao = dr.GetString(2);
-                exer.Tempo = dr.GetDateTime(3);
+                exer.Tempo = dr.GetString(3);
                 exer.TipoExercicio = TipoExercicio.ObterPorId(dr.GetInt32(4));
                 list.Add(exer);
             }
@@ -164,7 +164,7 @@ namespace MellitusClass
             cmd.CommandText = "update exercicios set titulo = @titulo, descricao = @descricao, tempo = @tempo where id = " + id;
             cmd.Parameters.Add("@titulo", MySqlDbType.VarChar).Value = Titulo;
             cmd.Parameters.Add("@descricao",MySqlDbType.VarChar).Value = Descricao;
-            cmd.Parameters.Add("@tempo", MySqlDbType.DateTime).Value = Tempo;
+            cmd.Parameters.Add("@tempo", MySqlDbType.VarChar).Value = Tempo;
             cmd.ExecuteNonQuery();
             Banco.Fechar(cmd);
         }

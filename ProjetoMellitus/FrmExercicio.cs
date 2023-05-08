@@ -31,7 +31,7 @@ namespace ProjetoMellitus
         private void button1_Click(object sender, EventArgs e)
         {
             Exercicio exer = new Exercicio(
-                0, txtTitulo.Text, txtDescricao.Text, Convert.ToDateTime(dtTempo.Text),
+                0, txtTitulo.Text, txtDescricao.Text, dtTempo.Text,
                 TipoExercicio.ObterPorId(Convert.ToInt32(comboBox1.Text))
                 );
             exer.InserirExercicios();
@@ -50,6 +50,24 @@ namespace ProjetoMellitus
                 );
             te.InserirTipoExercicio();
             txtId_TipoE.Text = te.Id.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VideoExercicio ve = new VideoExercicio(
+                Exercicio.ObterPorId(Convert.ToInt32(txtIdVideoExercicio.Text)), txtVideo.Text
+                );
+            ve.Inserir();
+            txtIdVideo.Text = ve.Id.ToString();
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            Exercicio ex = Exercicio.ObterPorId(Convert.ToInt32(textBox1.Text));
+            txtTitulo.Text = ex.Titulo;
+            txtDescricao.Text = ex.Descricao;
+            dtTempo.Text = ex.Tempo.ToString();
+            comboBox1.Text = ex.TipoExercicio.Id.ToString();
         }
     }
 }
