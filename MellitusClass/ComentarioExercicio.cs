@@ -48,7 +48,7 @@ namespace MellitusClass
         public void InserirComentariosExercicios()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert comentariosexer (id_user, id_exer, comentarios)" +
+            cmd.CommandText = "insert comentarioexer (id_user, id_exer, comentarios)" +
                 " values (@user, @exer, @comentarios)";
             cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = Usuario.Id;
             cmd.Parameters.Add("@exer",MySqlDbType.Int32).Value = Exercicio.Id;

@@ -42,6 +42,12 @@ namespace MellitusClass
             Tempo = tempo;
             TipoExercicio = tipoExercicio;
         }
+        public Exercicio(string titulo, string descricao, string tempo)
+        {
+            Titulo = titulo;
+            Descricao = descricao;
+            Tempo = tempo;
+        }
 
 
         //Métodos De Acesso

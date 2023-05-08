@@ -63,6 +63,7 @@ namespace ProjetoMellitus
             txtSobrenome.Text = user.SobreNome;
             txtIdade.Text = user.Idade.ToString();
             txtSenha.Text = user.Senha;
+            txtEmail.Text = user.Email;
         }
 
         private void button2_Click(object sender, EventArgs e)
